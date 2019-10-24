@@ -1,18 +1,20 @@
+from decimal import *
+
 ITERATIONS = 100
-PRECISION = 0.000000000001
-LOWEST_RATE = 0.001
-HIGHEST_RATE = 1
+PRECISION = Decimal(0.00000000000000000000001)
+LOWEST_RATE = Decimal(0.001)
+HIGHEST_RATE = Decimal(1)
 
 
 def npv(cash_flow, rate):
-    npv_flow = 0.0
+    npv_flow = Decimal(0)
     for i in range(len(cash_flow)):
         npv_flow += cash_flow[i] / ((1 + rate) ** (i + 1))
     return npv_flow
 
 
 def irr(cash_flow):
-    irr_rate = 0
+    irr_rate = Decimal(0)
     low_rate = LOWEST_RATE
     high_rate = HIGHEST_RATE
     old_npv = npv(cash_flow, irr_rate)
@@ -38,5 +40,12 @@ def irr(cash_flow):
     return irr_rate
 
 
-example_cash_flow = [-10000.0, 1000.0, 2000.0, 3000.0, 4000.0, 8000.0]
+example_cash_flow = [
+    Decimal(-10000.0),
+    Decimal(1000.0),
+    Decimal(2000.0),
+    Decimal(3000.0),
+    Decimal(4000.0),
+    Decimal(8000.0)
+]
 print(irr(example_cash_flow))

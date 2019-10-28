@@ -1,7 +1,7 @@
 from decimal import *
 
-ITERATIONS = 100
-PRECISION = Decimal(0.00000000000000000000001)
+ITERATIONS = 1000
+PRECISION = Decimal(0.000000000000001)
 LOWEST_RATE = Decimal(0.001)
 HIGHEST_RATE = Decimal(1)
 
@@ -9,7 +9,8 @@ HIGHEST_RATE = Decimal(1)
 def npv(cash_flow, rate):
     npv_flow = Decimal(0)
     for i in range(len(cash_flow)):
-        npv_flow += cash_flow[i] / ((1 + rate) ** (i + 1))
+        print(f'{cash_flow[i]} -> [{i}] {cash_flow[i] / ((1 + rate) ** i)}')
+        npv_flow += cash_flow[i] / ((1 + rate) ** i)
     return npv_flow
 
 
@@ -41,11 +42,42 @@ def irr(cash_flow):
 
 
 example_cash_flow = [
-    Decimal(-10000.0),
-    Decimal(1000.0),
-    Decimal(2000.0),
-    Decimal(3000.0),
-    Decimal(4000.0),
-    Decimal(8000.0)
+    Decimal(-149000000000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1361850000),
+    Decimal(1273950000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1361850000),
+    Decimal(1230150000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1361850000),
+    Decimal(1230150000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(1361850000),
+    Decimal(1361850000),
+    Decimal(1317900000),
+    Decimal(151361850000)
 ]
 print(irr(example_cash_flow))
